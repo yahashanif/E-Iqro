@@ -27,6 +27,8 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+     ProviderUser providerUser = Provider.of<ProviderUser>(context);
+    User user = providerUser.user;
     return Scaffold(
         backgroundColor: Colors.white,
         bottomNavigationBar: Container(

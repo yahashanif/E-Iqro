@@ -4,8 +4,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_radar_chart/flutter_radar_chart.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
 
+import '../../models/User.dart';
+import '../../providers/getdataUser.dart';
 import '../widgets/widgets.dart';
 
 part 'splash_screen.dart';

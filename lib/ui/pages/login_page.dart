@@ -5,6 +5,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProviderUser providerUser = Provider.of<ProviderUser>(context);
     return Scaffold(
         body: SafeArea(
       child: ListView(
@@ -82,10 +83,11 @@ class LoginPage extends StatelessWidget {
                     height: 30,
                   ),
                   TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor:Colors.black),
+                    style: TextButton.styleFrom(backgroundColor: Colors.black),
                     onPressed: () {
-                      Get.to(MainPage());
+                      providerUser
+                          .getUSer()
+                          .then((value) => Get.to(MainPage()));
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(80, 10, 80, 10),

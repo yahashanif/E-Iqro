@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    ProviderUser providerUser = Provider.of<ProviderUser>(context);
+    User user = providerUser.user;
     return Scaffold(
       body: SafeArea(
         child: ListView(children: [
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                           margin: EdgeInsets.fromLTRB(10, 13, 0, 22),
                           child: Text(
-                            "Gabriella Gracia M.",
+                            "${user.first_name} ${user.last_name}",
                             style: TextStyle(fontSize: 30),
                           )),
                       Center(
