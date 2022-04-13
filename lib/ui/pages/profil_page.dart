@@ -14,6 +14,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    ProviderUser providerUser = Provider.of<ProviderUser>(context);
+    User user = providerUser.user;
     const ticks = [2, 4, 6, 8, 10];
     var features = ["AA", "BB", "CC", "DD", "EE"];
     var data1 = [
@@ -55,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Gabriella Gracia M.",
+                          "${user.nama_lengkap}",
                           style: TextStyle(fontSize: 24, color: Colors.white),
                         ),
                         Text(

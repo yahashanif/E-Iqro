@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                           margin: EdgeInsets.fromLTRB(10, 13, 0, 22),
                           child: Text(
-                            "${user.first_name} ${user.last_name}",
+                            "${user.nama_lengkap}",
                             style: TextStyle(fontSize: 30),
                           )),
                       Center(
@@ -353,7 +353,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             GestureDetector(
                               onTap: (){
-                                Get.to(ListDataDetailPage(title: "Akademik",));
+                                Get.to(DetailPage());
                               },
                               child: Container(
                                 margin: EdgeInsets.symmetric(horizontal: 30),

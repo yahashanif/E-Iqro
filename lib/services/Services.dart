@@ -6,19 +6,20 @@ import '../models/User.dart';
 
 
 class Services{
-  String baseURL = "https://reqres.in/api/users/2";
+  String baseURL = "http://eiqro.elites.id/api/v1/";
 
   Future<User> getUser() async {
-    var url = '$baseURL';
+    var url = baseURL+"siswa";
     var header = {'Content-Type': 'application/json'};
 
     var response = await http.get(Uri.parse(url),headers: header);
 
     print(response.body);
 
-      var data = jsonDecode(response.body)['data'];
-      User user = User.fromJson(data);
+      List data = jsonDecode(response.body)['data']['data'] ;
+      List<User> user = data.map((i) => User.fromJson(i)).toList();
+      print(user.first.nama_lengkap);
       print(response.statusCode);
-    return user;
+    return user.first;
   }
 }
