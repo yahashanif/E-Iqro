@@ -359,59 +359,64 @@ class _HomePageState extends State<HomePage> {
                                 color: Color(0xFFFFF3F7),
                               ),
                               child: Card(
-                                child: Container(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 14),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(18),
-                                        gradient: LinearGradient(
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                            colors: [
-                                              Color(0xFF579CF0),
-                                              Color(0xFF69F5F5)
-                                            ])),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: 65,
-                                          width: 65,
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.white,
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                  "assets/Stuck at Home Working from Home.png",
-                                                ),
-                                                fit: BoxFit.cover,
-                                              )),
-                                        ),
-                                        SizedBox(
-                                          width: 16,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "Deskripsi",
-                                              style: TextStyle(
-                                                  fontSize: 24,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                              "Describe today's activities",
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Colors.white),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    )),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Get.to(DetailPage());
+                                  },
+                                  child: Container(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 14),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(18),
+                                          gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Color(0xFF579CF0),
+                                                Color(0xFF69F5F5)
+                                              ])),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: 65,
+                                            width: 65,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Colors.white,
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                    "assets/Stuck at Home Working from Home.png",
+                                                  ),
+                                                  fit: BoxFit.cover,
+                                                )),
+                                          ),
+                                          SizedBox(
+                                            width: 16,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Deskripsi",
+                                                style: TextStyle(
+                                                    fontSize: 24,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Describe today's activities",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Colors.white),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      )),
+                                ),
                               ))),
                       SizedBox(
                         height: 100,
