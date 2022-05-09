@@ -105,13 +105,13 @@ class _HomePageState extends State<HomePage> {
                                       color: Colors.white, fontSize: 18),
                                 ),
                                 GestureDetector(
-                                  onTap: (){
-                                    Get.to(ReportMingguan());
-                                  },
+                                    onTap: () {
+                                      Get.to(ReportMingguan());
+                                    },
                                     child: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: Colors.white,
-                                ))
+                                      Icons.arrow_forward_ios,
+                                      color: Colors.white,
+                                    ))
                               ],
                             ),
                             SizedBox(
@@ -347,106 +347,73 @@ class _HomePageState extends State<HomePage> {
                         height: 30,
                       ),
                       Center(
-                        child: Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          runSpacing: 20,
-                          children: [
-                            GestureDetector(
-                              onTap: (){
-                                Get.to(DetailPage());
-                              },
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 30),
-                                height: 120,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                    border: Border.all(),
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("Akademik"),
-                                    Container(
-                                      height: 75,
-                                      width: 75,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/home_back.png"))),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 30),
-                              height: 120,
-                              width: 120,
+                          child: Container(
+                              height: 200,
+                              margin: EdgeInsets.symmetric(horizontal: 16),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 17, vertical: 24),
+                              width: double.infinity,
                               decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Data 2"),
-                                  Container(
-                                    height: 75,
-                                    width: 75,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/Miroodles.png"))),
-                                  )
-                                ],
+                                boxShadow: [BoxShadow()],
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xFFFFF3F7),
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 30),
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Data 3"),
-                                  Container(
-                                    height: 75,
-                                    width: 75,
+                              child: Card(
+                                child: Container(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 14),
                                     decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/ball.png"))),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 30),
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Data 4"),
-                                  Container(
-                                    height: 75,
-                                    width: 75,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/family.png"))),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),SizedBox(
+                                        borderRadius: BorderRadius.circular(18),
+                                        gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color(0xFF579CF0),
+                                              Color(0xFF69F5F5)
+                                            ])),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 65,
+                                          width: 65,
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.white,
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                  "assets/Stuck at Home Working from Home.png",
+                                                ),
+                                                fit: BoxFit.cover,
+                                              )),
+                                        ),
+                                        SizedBox(
+                                          width: 16,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Deskripsi",
+                                              style: TextStyle(
+                                                  fontSize: 24,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              "Describe today's activities",
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    )),
+                              ))),
+                      SizedBox(
                         height: 100,
                       )
                     ],
