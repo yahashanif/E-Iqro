@@ -8,10 +8,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DateTime? date;
+  String? tgl;
+  String? formattedDate;
+  void _navigationReport(BuildContext context) async {
+    formattedDate = await Get.to(() => ReportMingguan());
+    if (formattedDate != null) {
+      setState(() {});
+      print(formattedDate); // call your own function here to refresh screen
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    Services services = Services();
     ProviderUser providerUser = Provider.of<ProviderUser>(context);
     User user = providerUser.user;
+    if (formattedDate == null) {
+      date = DateTime.now();
+      tgl = formattedDate;
+      formattedDate = DateFormat('yyyy-MM-dd').format(date!);
+    }
     return Scaffold(
       body: SafeArea(
         child: ListView(children: [
@@ -49,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                           margin: EdgeInsets.fromLTRB(10, 13, 0, 22),
                           child: Text(
-                            "${user.nama_lengkap}",
+                            "${user.namaLengkap}",
                             style: TextStyle(fontSize: 30),
                           )),
                       Center(
@@ -100,13 +117,13 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "25 Februari 2022",
+                                  "$formattedDate",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 18),
                                 ),
                                 GestureDetector(
                                     onTap: () {
-                                      Get.to(ReportMingguan());
+                                      _navigationReport(context);
                                     },
                                     child: Icon(
                                       Icons.arrow_forward_ios,
@@ -118,228 +135,105 @@ class _HomePageState extends State<HomePage> {
                               height: 18,
                             ),
                             Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Akademik",
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-                                  SizedBox(
-                                    height: 3,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Flexible(
-                                        flex: 5,
-                                        child: Container(
-                                          height: 22,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xFF7762F3),
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              ((
-                                                      /** Data dikali dengan 10 dan dibagi 100 untuk mendapatkan
-                                                 * tampilan progres bar 
-                                                 * yang di ganti cuman nilai di depan
-                                                 */
-                                                      8 * 10) /
-                                                  100) /
-                                              1.5,
-                                          // 2
-                                        ),
-                                      ),
-                                      Flexible(
-                                          flex: 1,
-                                          child: Center(
-                                              child: Text(
-                                            "8",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white),
-                                          )))
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Data 2",
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-                                  SizedBox(
-                                    height: 3,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Flexible(
-                                        flex: 5,
-                                        child: Container(
-                                          height: 22,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xFF7762F3),
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              ((
-                                                      /** Data dikali dengan 10 dan dibagi 100 untuk mendapatkan
-                                                 * tampilan progres bar 
-                                                 * yang di ganti cuman nilai di depan
-                                                 */
-                                                      7 * 10) /
-                                                  100) /
-                                              1.5,
-                                          // 2
-                                        ),
-                                      ),
-                                      Flexible(
-                                          flex: 1,
-                                          child: Center(
-                                              child: Text(
-                                            "7",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white),
-                                          )))
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Data 3",
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-                                  SizedBox(
-                                    height: 3,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Flexible(
-                                        flex: 5,
-                                        child: Container(
-                                          height: 22,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xFF7762F3),
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              ((
-                                                      /** Data dikali dengan 10 dan dibagi 100 untuk mendapatkan
-                                                 * tampilan progres bar 
-                                                 * yang di ganti cuman nilai di depan
-                                                 */
-                                                      6 * 10) /
-                                                  100) /
-                                              1.5,
-                                          // 2
-                                        ),
-                                      ),
-                                      Flexible(
-                                          flex: 1,
-                                          child: Center(
-                                              child: Text(
-                                            "6",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white),
-                                          )))
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Data 4",
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-                                  SizedBox(
-                                    height: 3,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Flexible(
-                                        flex: 5,
-                                        child: Container(
-                                          height: 22,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xFF7762F3),
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              ((
-                                                      /** Data dikali dengan 10 dan dibagi 100 untuk mendapatkan
-                                                 * tampilan progres bar 
-                                                 * yang di ganti cuman nilai di depan
-                                                 */
-                                                      8 * 10) /
-                                                  100) /
-                                              1.5,
-                                          // 2
-                                        ),
-                                      ),
-                                      // ignore: prefer_const_constructors
-                                      Flexible(
-                                          flex: 1,
-                                          // ignore: prefer_const_constructors
-                                          child: Center(
-                                              // ignore: prefer_const_constructors
-                                              child: Text(
-                                            "8",
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white),
-                                          )))
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
-                            ),
+                              height: 300,
+                              child: StreamBuilder<List<dynamic>>(
+                                  stream: services.getKegiatanDatas(
+                                      formattedDate.toString()),
+                                  builder: (context, snapshot) {
+                                     if(snapshot.hasData){
+
+                                      return ListView.builder(
+                                        itemCount:
+                                            ((services.splitted.length) / 2)
+                                                .toInt(),
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          print(services.splitted[index + 1]
+                                              .toString()
+                                              .substring(0, 2));
+                                          // Text(services.kegiatan.length.toString())
+                                          return Container(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  index == 0
+                                                      ? services.splitted[index]
+                                                          .toString()
+                                                          .substring(1)
+                                                      : services.splitted[index]
+                                                          .toString()
+                                                          .substring(3),
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white),
+                                                ),
+                                                SizedBox(
+                                                  height: 3,
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Flexible(
+                                                      flex: 5,
+                                                      child: Container(
+                                                        height: 22,
+                                                        decoration: BoxDecoration(
+                                                            color: Color(
+                                                                0xFF7762F3),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        30)),
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            ((
+                                                                    /** Data dikali dengan 10 dan dibagi 100 untuk mendapatkan
+                                                   * tampilan progres bar 
+                                                   * yang di ganti cuman nilai di depan
+                                                   */
+                                                                    services.splitted[
+                                                                  index + 1]
+                                                              .toString()
+                                                              .substring(0, 2).toDouble()! * 10) /
+                                                                100) /
+                                                            1.5,
+                                                        // 2
+                                                      ),
+                                                    ),
+                                                    Flexible(
+                                                        flex: 1,
+                                                        child: Center(
+                                                            child: Text(
+                                                          services.splitted[
+                                                                  index + 1]
+                                                              .toString()
+                                                              .substring(0, 2),
+                                                          style: TextStyle(
+                                                              fontSize: 18,
+                                                              color:
+                                                                  Colors.white),
+                                                        )))
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                )
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );}else{
+                                        return Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      }}),
+                            )
                           ],
                         ),
                       ),
@@ -360,14 +254,15 @@ class _HomePageState extends State<HomePage> {
                               ),
                               child: Card(
                                 child: GestureDetector(
-                                  onTap: (){
-                                    Get.to(DetailPage());
+                                  onTap: () {
+                                    Get.to(DetailPage(formattedDate.toString()));
                                   },
                                   child: Container(
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 14),
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(18),
+                                          borderRadius:
+                                              BorderRadius.circular(18),
                                           gradient: LinearGradient(
                                               begin: Alignment.topCenter,
                                               end: Alignment.bottomCenter,
@@ -404,7 +299,8 @@ class _HomePageState extends State<HomePage> {
                                                 style: TextStyle(
                                                     fontSize: 24,
                                                     color: Colors.white,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               Text(
                                                 "Describe today's activities",

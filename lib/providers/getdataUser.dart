@@ -1,10 +1,14 @@
 
 import 'package:eiqro/services/Services.dart';
+import 'package:eiqro/ui/pages/pages.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../models/User.dart';
 
 class ProviderUser with ChangeNotifier{
+  final box = GetStorage();
   User? _user;
 
   User get user => _user!;
@@ -14,10 +18,15 @@ class ProviderUser with ChangeNotifier{
     notifyListeners();
   }
 
-   Future<void> getUSer() async {
+   Future<void> getUSer(String noTelp,String password) async {
     try {
-     User user = await Services().getUser();
+     User user = await Services().login(noTelp,password);
       _user = user;
+      box.write("token", _user!.token);
+      print(box.read("token"));
+      if(_user != null){
+        Get.offAll(MainPage());
+      }
     } catch (e) {
       print(e);
     }

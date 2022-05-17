@@ -1,0 +1,10 @@
+{
+    "id": 6,
+    "id_siswa": "1",
+    "kegiatan": "{\"field_kegiatan\":{\"Melakukan gerakan menggantung (bergelayut)\":{\"radio\":{\"BSB\":3,\"BSH\":2,\"MB\":1,\"BB\":0}},\"Menirukan gerakan binatang, pohon tertiup angin, pesawat lerbang, dsb\":{\"radio\":{\"BSB\":3,\"BSH\":2,\"MB\":1,\"BB\":0}},\"Membuat garis vertical/horizontal, lengkung, miring dan lingkaran\":{\"radio\":{\"BSB\":3,\"BSH\":2,\"MB\":1,\"BB\":0}},\"Menangkap sesuatu secara tepat\":{\"radio\":{\"BSB\":3,\"BSH\":2,\"MB\":1,\"BB\":0}},\"Menendang sesuatu secara terarah\":{\"radio\":{\"BSB\":3,\"BSH\":2,\"MB\":1,\"BB\":0}}},\"data_kegiatan\":{\"Melakukan gerakan menggantung (bergelayut)\":\"2\",\"Menirukan gerakan binatang, pohon tertiup angin, pesawat lerbang, dsb\":\"2\",\"Membuat garis vertical/horizontal, lengkung, miring dan lingkaran\":\"2\",\"Menangkap sesuatu secara tepat\":\"2\",\"Menendang sesuatu secara terarah\":\"2\"}}",
+    "keterangan": "First",
+    "tanggal": "2022-04-30",
+    "attachment": "{\"field_attachment\":{\"attachment_0\":\"file\",\"attachment_1\":\"file\"},\"data_attachment\":{\"attachment_0\":\"assets/aktifitas/QW6jLq.jpg\",\"attachment_1\":\"assets/aktifitas/Dsc 0331-1.m4v\"}}",
+    "created_at": "2022-05-14T11:24:20.000000Z",
+    "updated_at": "2022-05-14T13:46:46.000000Z"
+}

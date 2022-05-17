@@ -57,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${user.nama_lengkap}",
+                          "${user.namaLengkap}",
                           style: TextStyle(fontSize: 24, color: Colors.white),
                         ),
                         Text(
@@ -106,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Container(
                       height: 250,
                       width: 250,
-                      child: RadarChart.dark(
+                      child: RadarChart.light(
                         ticks: ticks,
                         features: ["AA", "BB", "CC", "DD", "EE", "FF"],
                         data: data1,

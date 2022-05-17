@@ -1,0 +1,51 @@
+{
+    "field_kegiatan": {
+        "Melakukan gerakan menggantung (bergelayut)": {
+            "radio": {
+                "BSB": 3,
+                "BSH": 2,
+                "MB": 1,
+                "BB": 0
+            }
+        },
+        "Menirukan gerakan binatang, pohon tertiup angin, pesawat lerbang, dsb": {
+            "radio": {
+                "BSB": 3,
+                "BSH": 2,
+                "MB": 1,
+                "BB": 0
+            }
+        },
+        "Membuat garis vertical/horizontal, lengkung, miring dan lingkaran": {
+            "radio": {
+                "BSB": 3,
+                "BSH": 2,
+                "MB": 1,
+                "BB": 0
+            }
+        },
+        "Menangkap sesuatu secara tepat": {
+            "radio": {
+                "BSB": 3,
+                "BSH": 2,
+                "MB": 1,
+                "BB": 0
+            }
+        },
+        "Menendang sesuatu secara terarah": {
+            "radio": {
+                "BSB": 3,
+                "BSH": 2,
+                "MB": 1,
+                "BB": 0
+            }
+        }
+    },
+    "data_kegiatan": {
+        "Melakukan gerakan menggantung (bergelayut)": "2",
+        "Menirukan gerakan binatang, pohon tertiup angin, pesawat lerbang, dsb": "2",
+        "Membuat garis vertical/horizontal, lengkung, miring dan lingkaran": "2",
+        "Menangkap sesuatu secara tepat": "2",
+        "Menendang sesuatu secara terarah": "2"
+    }
+}

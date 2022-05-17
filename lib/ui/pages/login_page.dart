@@ -5,6 +5,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController noTelpController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     ProviderUser providerUser = Provider.of<ProviderUser>(context);
     return Scaffold(
         body: SafeArea(
@@ -47,9 +49,11 @@ class LoginPage extends StatelessWidget {
                   // ignore: prefer_const_constructors
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16),
-                    child: const TextField(
+                    child: TextField(
+                      controller: noTelpController,
                       decoration: InputDecoration(
-                          hintText: "email@example.com",
+                          hintText: "No Telp",
+                          
                           enabledBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(width: 3, color: Colors.black),
@@ -65,7 +69,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 16),
-                    child: const TextField(
+                    child: TextField(
+                      controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                           hintText: "******",
@@ -85,9 +90,8 @@ class LoginPage extends StatelessWidget {
                   TextButton(
                     style: TextButton.styleFrom(backgroundColor: Colors.black),
                     onPressed: () {
-                      providerUser
-                          .getUSer()
-                          .then((value) => Get.to(MainPage()));
+                      providerUser.getUSer(noTelpController.text,
+                          passwordController.text);
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(80, 10, 80, 10),

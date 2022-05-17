@@ -1,11 +1,14 @@
 part of 'pages.dart';
 
 class DetailPage extends StatefulWidget {
+  final String tgl;
+  DetailPage(this.tgl);
   @override
   _DetailPageState createState() => _DetailPageState();
 }
 
 class _DetailPageState extends State<DetailPage> {
+  Services services = Services();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,8 +59,7 @@ class _DetailPageState extends State<DetailPage> {
             height: 8,
           ),
           Center(
-            child:
-                Text("25 Februari 2022", style: TextStyle(color: Colors.red)),
+            child: Text(widget.tgl, style: TextStyle(color: Colors.red)),
           ),
           SizedBox(
             height: 60,
@@ -78,32 +80,62 @@ class _DetailPageState extends State<DetailPage> {
                 SizedBox(
                   height: 8,
                 ),
-                Column(
-                  children: moctdata
-                      .map(
-                        (e) => Container(
-                          margin: EdgeInsets.only(bottom: 10),
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          height: 40,
-                          decoration: BoxDecoration(
-                              color: "676CDE".toColor(),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                e.title!,
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
-                              ),
-                              Text(e.point.toString(),
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.white))
-                            ],
-                          ),
-                        ),
-                      )
-                      .toList(),
+                Container(
+                  height: 200,
+                  child: StreamBuilder<List<dynamic>>(
+                      stream: services.getKegiatanDatas(widget.tgl),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return ListView.builder(
+                            itemCount: ((services.splitted.length) / 2).toInt(),
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: EdgeInsets.only(bottom: 10),
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    color: "676CDE".toColor(),
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        index == 0
+                                            ? services.splitted[index]
+                                                .toString()
+                                                .substring(1)
+                                            : services.splitted[index]
+                                                .toString()
+                                                .substring(3),
+                                        style: TextStyle(
+                                            fontSize: 15, color: Colors.white),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Text(
+                                          services.splitted[index + 1]
+                                              .toString()
+                                              .substring(0, 2),
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.white)),
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        } else {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        ;
+                      }),
                 ),
                 SizedBox(
                   height: 30,
@@ -118,8 +150,17 @@ class _DetailPageState extends State<DetailPage> {
                   decoration: BoxDecoration(
                       border: Border.all(),
                       borderRadius: BorderRadius.circular(5)),
-                  child: Text(
-                      "Kurang mau makan karena kenyang\nKurang mau makan karena kenyang\nKurang mau makan karena kenyang\n"),
+                  child: StreamBuilder<Kegiatan>(
+                      stream: services.getKeterangans(widget.tgl),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text(snapshot.data!.keterangan.toString());
+                        } else {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      }),
                 ),
                 SizedBox(
                   height: 50,
