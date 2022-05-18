@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../models/User.dart';
 import '../../models/kegiatan.dart';

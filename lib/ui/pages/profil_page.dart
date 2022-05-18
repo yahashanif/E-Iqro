@@ -71,6 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           /**
                          * Function Log Out
                          */
+                          Get.offAll(LoginPage());
                         },
                         child: Icon(
                           Icons.login,
@@ -160,9 +161,88 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               SizedBox(
+                height: 40,
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: Offset(0, 12), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      "Skema DATA  Akademik",
+                      style: TextStyle(fontSize: 18, color: Colors.blue[300]),
+                    ),
+                    Container(
+                      height: 250,
+                      width: 250,
+                      child: RadarChart.light(
+                        ticks: ticks,
+                        features: ["AA", "BB", "CC", "DD", "EE", "FF"],
+                        data: data1,
+                        reverseAxis: true,
+                        useSides: true,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 20,
+                      width: MediaQuery.of(context).size.width / 3,
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(15)),
+                    ),
+                    SizedBox(
+                      width: 33,
+                    ),
+                    Text("Keterangan")
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 20,
+                      width: MediaQuery.of(context).size.width / 3,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(15)),
+                    ),
+                    SizedBox(
+                      width: 33,
+                    ),
+                    Text("Keterangan")
+                  ],
+                ),
+              ),
+
+              SizedBox(
                 height: 95,
               ),
-           
             ],
           ),
         ),

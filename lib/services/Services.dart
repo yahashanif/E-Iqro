@@ -3,24 +3,28 @@ import 'dart:convert';
 import 'package:eiqro/models/kegiatan.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/User.dart';
 
 class Services {
-   late List<Kegiatan> kegiatan;
-   late Kegiatan kdata;
-   late  List splitted;
+  late List<Kegiatan> kegiatan;
+  late Kegiatan kdata;
+  late List splitted;
+  var box = GetStorage();
+
   String baseURL = "https://eiqro.elites.id/api/";
-  
 
   Stream<List<Kegiatan>> getKegiatans() {
     return Stream.periodic(Duration(seconds: 3))
         .asyncMap((event) => getKegiatan());
   }
+
   Stream<List<dynamic>> getKegiatanDatas(String tgl) {
     return Stream.periodic(Duration(seconds: 3))
         .asyncMap((event) => getKegiatanData(tgl));
   }
+
   Stream<Kegiatan> getKeterangans(String tgl) {
     return Stream.periodic(Duration(seconds: 3))
         .asyncMap((event) => getKeterangan(tgl));
@@ -54,34 +58,53 @@ class Services {
     return user;
   }
 
+   getMeet() async {
+    var url = baseURL + "v1/meet";
+    var token = box.read("token");
+    var header = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+
+    var response = await http.get(Uri.parse(url), headers: header);
+    var data = jsonDecode(response.body)['data']['link'];
+    print(data);
+    await launch(data);
+  }
+
   Future<List<Kegiatan>> getKegiatan() async {
     var url = baseURL + "v1/motorik";
-    var box = GetStorage();
     var token = box.read("token");
-    var header = {'Content-Type': 'application/json','Authorization': 'Bearer $token',};
+    var header = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
 
     var response = await http.get(Uri.parse(url), headers: header);
 
     print(response.body);
 
     List data = jsonDecode(response.body)['data']['data'];
-   kegiatan = data.map((i) => Kegiatan.fromJson(i)).toList();
+    kegiatan = data.map((i) => Kegiatan.fromJson(i)).toList();
     // print(response.statusCode);
     return kegiatan;
   }
 
-   Future<List<dynamic>> getKegiatanData(String tgl) async {
+  Future<List<dynamic>> getKegiatanData(String tgl) async {
     var url = baseURL + "v1/motorik";
     var box = GetStorage();
     var token = box.read("token");
-    var header = {'Content-Type': 'application/json','Authorization': 'Bearer $token',};
+    var header = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
 
     var response = await http.get(Uri.parse(url), headers: header);
 
     print(response.body);
 
     List data = jsonDecode(response.body)['data']['data'];
-   kegiatan = data.map((i) => Kegiatan.fromJson(i)).toList();
+    kegiatan = data.map((i) => Kegiatan.fromJson(i)).toList();
     print(response.statusCode);
     kegiatan = kegiatan.where((element) => element.tanggal == tgl).toList();
     kdata = kegiatan.first;
@@ -91,22 +114,26 @@ class Services {
     splitted = kk['data_kegiatan'].toString().split(':');
     return splitted;
   }
+
   Future<Kegiatan> getKeterangan(String tgl) async {
     var url = baseURL + "v1/motorik";
     var box = GetStorage();
     var token = box.read("token");
-    var header = {'Content-Type': 'application/json','Authorization': 'Bearer $token',};
+    var header = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
 
     var response = await http.get(Uri.parse(url), headers: header);
 
     print(response.body);
 
     List data = jsonDecode(response.body)['data']['data'];
-   kegiatan = data.map((i) => Kegiatan.fromJson(i)).toList();
+    kegiatan = data.map((i) => Kegiatan.fromJson(i)).toList();
     print(response.statusCode);
     kegiatan = kegiatan.where((element) => element.tanggal == tgl).toList();
     kdata = kegiatan.first;
-   
+
     return kdata;
   }
 }

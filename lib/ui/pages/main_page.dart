@@ -18,6 +18,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   void initState() {
+    
     super.initState();
     // print(context.read<AddressCubit>().getAddress(
     //     (context.read<UserCubit>().state as UserLoaded).user.id.toString()));

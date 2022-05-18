@@ -8,6 +8,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Services services = Services();
+  String? link;
+
+  @override
+  void initState() {
+    services.splitted = [];
+    super.initState();
+  }
+
   DateTime? date;
   String? tgl;
   String? formattedDate;
@@ -21,7 +30,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Services services = Services();
     ProviderUser providerUser = Provider.of<ProviderUser>(context);
     User user = providerUser.user;
     if (formattedDate == null) {
@@ -76,7 +84,9 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(20)),
                           margin: EdgeInsets.symmetric(horizontal: 60),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              services.getMeet();
+                            },
                             child: Container(
                               margin: EdgeInsets.fromLTRB(45, 0, 45, 0),
                               child: Row(
@@ -143,7 +153,8 @@ class _HomePageState extends State<HomePage> {
                                     if (snapshot.hasData) {
                                       return ListView.builder(
                                         itemCount: ((services.splitted.length))
-                                            .toInt()-1,
+                                                .toInt() -
+                                            1,
                                         itemBuilder:
                                             (BuildContext context, int index) {
                                           print(services.splitted[index]
@@ -195,10 +206,16 @@ class _HomePageState extends State<HomePage> {
                                                    * tampilan progres bar 
                                                    * yang di ganti cuman nilai di depan
                                                    */
-                                                                    (services.splitted.length.toInt()-1) ==
+                                                                    (services.splitted.length.toInt() -
+                                                                                1) ==
                                                                             index
-                                                                        ? services.splitted[
-                                                                            index].toString().substring(0, 2).toDouble()!
+                                                                        ? services
+                                                                            .splitted[
+                                                                                index]
+                                                                            .toString()
+                                                                            .substring(0,
+                                                                                2)
+                                                                            .toDouble()!
                                                                         : services.splitted[index + 1].toString().substring(0, 2).toDouble()! *
                                                                             10) /
                                                                 100) /
@@ -210,8 +227,10 @@ class _HomePageState extends State<HomePage> {
                                                         flex: 1,
                                                         child: Center(
                                                             child: Text(
-                                                         ( services.splitted
-                                                                      .length.toInt()-1) ==
+                                                          (services.splitted
+                                                                          .length
+                                                                          .toInt() -
+                                                                      1) ==
                                                                   index
                                                               ? services
                                                                       .splitted[
