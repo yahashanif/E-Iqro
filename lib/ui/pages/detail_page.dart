@@ -87,7 +87,7 @@ class _DetailPageState extends State<DetailPage> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return ListView.builder(
-                            itemCount: ((services.splitted.length) / 2).toInt(),
+                            itemCount: ((services.splitted.length)).toInt()-1,
                             itemBuilder: (context, index) {
                               return Container(
                                 margin: EdgeInsets.only(bottom: 10),

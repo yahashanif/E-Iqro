@@ -14,15 +14,15 @@ class Services {
   
 
   Stream<List<Kegiatan>> getKegiatans() {
-    return Stream.periodic(Duration(seconds: 1))
+    return Stream.periodic(Duration(seconds: 3))
         .asyncMap((event) => getKegiatan());
   }
   Stream<List<dynamic>> getKegiatanDatas(String tgl) {
-    return Stream.periodic(Duration(seconds: 1))
+    return Stream.periodic(Duration(seconds: 3))
         .asyncMap((event) => getKegiatanData(tgl));
   }
   Stream<Kegiatan> getKeterangans(String tgl) {
-    return Stream.periodic(Duration(seconds: 1))
+    return Stream.periodic(Duration(seconds: 3))
         .asyncMap((event) => getKeterangan(tgl));
   }
 
@@ -66,7 +66,7 @@ class Services {
 
     List data = jsonDecode(response.body)['data']['data'];
    kegiatan = data.map((i) => Kegiatan.fromJson(i)).toList();
-    print(response.statusCode);
+    // print(response.statusCode);
     return kegiatan;
   }
 

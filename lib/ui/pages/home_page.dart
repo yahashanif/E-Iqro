@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   Icon(
-                                    Icons.add,
+                                    Icons.arrow_forward_ios,
                                     size: 25,
                                     color: Colors.white,
                                   )
@@ -140,15 +140,13 @@ class _HomePageState extends State<HomePage> {
                                   stream: services.getKegiatanDatas(
                                       formattedDate.toString()),
                                   builder: (context, snapshot) {
-                                     if(snapshot.hasData){
-
+                                    if (snapshot.hasData) {
                                       return ListView.builder(
-                                        itemCount:
-                                            ((services.splitted.length) / 2)
-                                                .toInt(),
+                                        itemCount: ((services.splitted.length))
+                                            .toInt()-1,
                                         itemBuilder:
                                             (BuildContext context, int index) {
-                                          print(services.splitted[index + 1]
+                                          print(services.splitted[index]
                                               .toString()
                                               .substring(0, 2));
                                           // Text(services.kegiatan.length.toString())
@@ -197,10 +195,12 @@ class _HomePageState extends State<HomePage> {
                                                    * tampilan progres bar 
                                                    * yang di ganti cuman nilai di depan
                                                    */
-                                                                    services.splitted[
-                                                                  index + 1]
-                                                              .toString()
-                                                              .substring(0, 2).toDouble()! * 10) /
+                                                                    (services.splitted.length.toInt()-1) ==
+                                                                            index
+                                                                        ? services.splitted[
+                                                                            index].toString().substring(0, 2).toDouble()!
+                                                                        : services.splitted[index + 1].toString().substring(0, 2).toDouble()! *
+                                                                            10) /
                                                                 100) /
                                                             1.5,
                                                         // 2
@@ -210,10 +210,18 @@ class _HomePageState extends State<HomePage> {
                                                         flex: 1,
                                                         child: Center(
                                                             child: Text(
-                                                          services.splitted[
-                                                                  index + 1]
-                                                              .toString()
-                                                              .substring(0, 2),
+                                                         ( services.splitted
+                                                                      .length.toInt()-1) ==
+                                                                  index
+                                                              ? services
+                                                                      .splitted[
+                                                                  index]
+                                                              : services
+                                                                  .splitted[
+                                                                      index + 1]
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0, 2),
                                                           style: TextStyle(
                                                               fontSize: 18,
                                                               color:
@@ -228,11 +236,13 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           );
                                         },
-                                      );}else{
-                                        return Center(
-                                          child: CircularProgressIndicator(),
-                                        );
-                                      }}),
+                                      );
+                                    } else {
+                                      return Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    }
+                                  }),
                             )
                           ],
                         ),
@@ -255,7 +265,8 @@ class _HomePageState extends State<HomePage> {
                               child: Card(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(DetailPage(formattedDate.toString()));
+                                    Get.to(
+                                        DetailPage(formattedDate.toString()));
                                   },
                                   child: Container(
                                       padding:
