@@ -14,11 +14,20 @@ class _ProfilePageState extends State<ProfilePage> {
   Services services = Services();
   @override
   void initState() {
-    services.getSpiderHalus();
+    services.SpiderHalusName = [];
+    services.SpiderKasarName = [];
+    if(services.SpiderHalusName.isEmpty){
+      setState(() {
+        
+      });
+    }
     // services.getSpiderHalus();
-    // services.SpiderHalusName;
     // services.SpiderHalusvalueBefore;
     // services.SpiderHalusvalueLast;
+    setState(() {
+    services.getSpiderHalus();
+      
+    });
     super.initState();
   }
 
@@ -119,6 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 250,
                       width: 250,
                       child: RadarChart.light(
+
                         ticks: ticks,
                         features: services.SpiderHalusName,
                         data: data1,
