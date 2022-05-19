@@ -32,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     ProviderUser providerUser = Provider.of<ProviderUser>(context);
     User user = providerUser.user;
-    const ticks = [10, 8, 6, 4, 2];
+    const ticks = [2,4,6,8,10];
     var features = ["A", "B", "C", "D", "E", "F", "G"];
     var features2 = ["H", "I", "K", "L", "M", "N"];
     var data1 = [
@@ -198,9 +198,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 250,
                       width: 250,
                       child: RadarChart.light(
-                        ticks: [5,4,3,2,1],
+                        ticks: ticks,
                         features: features2,
-                        data: data2,
+                        data: data1,
                         reverseAxis: true,
                         useSides: true,
                       ),
@@ -279,7 +279,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: RadarChart.light(
                         ticks: ticks,
                         features: features,
-                        data: data1,
+                        data: data2,
                         reverseAxis: true,
                         useSides: true,
                       ),
