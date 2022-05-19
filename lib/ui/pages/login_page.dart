@@ -1,12 +1,17 @@
 part of 'pages.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
     TextEditingController noTelpController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
     ProviderUser providerUser = Provider.of<ProviderUser>(context);
     return Scaffold(
         body: SafeArea(
@@ -34,7 +39,6 @@ class LoginPage extends StatelessWidget {
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   const SizedBox(
                     height: 200,
@@ -53,7 +57,6 @@ class LoginPage extends StatelessWidget {
                       controller: noTelpController,
                       decoration: InputDecoration(
                           hintText: "No Telp",
-                          
                           enabledBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(width: 3, color: Colors.black),
@@ -90,8 +93,8 @@ class LoginPage extends StatelessWidget {
                   TextButton(
                     style: TextButton.styleFrom(backgroundColor: Colors.black),
                     onPressed: () {
-                      providerUser.getUSer(noTelpController.text,
-                          passwordController.text);
+                      providerUser.getUSer(
+                          noTelpController.text, passwordController.text);
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(80, 10, 80, 10),

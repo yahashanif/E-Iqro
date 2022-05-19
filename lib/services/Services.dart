@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:eiqro/models/kegiatan.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -112,7 +113,8 @@ class Services {
     var data = jsonDecode(response.body)['data'];
     User user = User.fromJson(data);
 
-    print(user);
+    // print(user);
+  
     return user;
   }
 

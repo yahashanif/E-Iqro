@@ -35,7 +35,7 @@ class _ReportMingguanState extends State<ReportMingguan> {
         ),
         title: Center(
           child: Text(
-            "Report Mingguan",
+            "Report",
             style: TextStyle(color: Colors.black),
           ),
         ),

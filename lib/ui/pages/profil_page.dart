@@ -33,7 +33,8 @@ class _ProfilePageState extends State<ProfilePage> {
     ProviderUser providerUser = Provider.of<ProviderUser>(context);
     User user = providerUser.user;
     const ticks = [10, 8, 6, 4, 2];
-    var features = ["AA", "BB", "CC", "DD", "EE"];
+    var features = ["A", "B", "C", "D", "E", "F", "G"];
+    var features2 = ["H", "I", "K", "L", "M", "N"];
     var data1 = [
       services.SpiderHalusvalueBeforefix,
       services.SpiderHalusvalueLastfix,
@@ -78,8 +79,80 @@ class _ProfilePageState extends State<ProfilePage> {
                           style: TextStyle(fontSize: 24, color: Colors.white),
                         ),
                         Text(
-                          "Kelas TK A ",
+                          "${user.kelas}",
                           style: TextStyle(fontSize: 18, color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Container(
+                                      color: Colors.white,
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            flex: 2,
+                                            child: Column(children: [
+                                              Text("Kode"),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              ...features
+                                                  .map((e) => Container(
+                                                      margin:
+                                                          EdgeInsets.all(10),
+                                                      child: Text(e)))
+                                                  .toList(),
+                                                  ...features2
+                                                  .map((e) => Container(
+                                                      margin:
+                                                          EdgeInsets.all(10),
+                                                      child: Text(e)))
+                                                  .toList(),
+                                            ]),
+                                          ),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text("Keterangan"),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  ...services.SpiderHalusName
+                                                          .map((e) => Container(
+                                                              margin: EdgeInsets
+                                                                  .all(5),
+                                                              child: Text(e)))
+                                                      .toList(),
+                                                  ...services.SpiderKasarName.map((e) => Container(
+                                                              margin: EdgeInsets
+                                                                  .all(5),
+                                                              child: Text(e))).toList()
+                                                ]),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                });
+                          },
+                          child: Container(
+                            height: 30,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: Center(child: Text("Keterangan")),
+                          ),
                         ),
                       ],
                     ),
@@ -118,94 +191,15 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   children: [
                     Text(
-                      "Skema DATA Akademik Motorik Halus",
+                      "Skema DATA Motorik Halus",
                       style: TextStyle(fontSize: 18, color: Colors.blue[300]),
                     ),
                     Container(
                       height: 250,
                       width: 250,
                       child: RadarChart.light(
-                        ticks: ticks,
-                        features: services.SpiderHalusName,
-                        data: data1,
-                        reverseAxis: true,
-                        useSides: true,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 20,
-                      width: MediaQuery.of(context).size.width / 3,
-                      decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(15)),
-                    ),
-                    SizedBox(
-                      width: 33,
-                    ),
-                    Text("Latest")
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 20,
-                      width: MediaQuery.of(context).size.width / 3,
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(15)),
-                    ),
-                    SizedBox(
-                      width: 33,
-                    ),
-                    Text("Before")
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: Offset(0, 12), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      "Skema DATA Akademik Motorik Kasar",
-                      style: TextStyle(fontSize: 18, color: Colors.blue[300]),
-                    ),
-                    Container(
-                      height: 250,
-                      width: 250,
-                      child: RadarChart.light(
-                        ticks: ticks,
-                        features: services.SpiderKasarName,
+                        ticks: [5,4,3,2,1],
+                        features: features2,
                         data: data2,
                         reverseAxis: true,
                         useSides: true,
@@ -231,7 +225,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(
                       width: 33,
                     ),
-                    Text("Latest")
+                    Text("Data Terbaru")
                   ],
                 ),
               ),
@@ -252,7 +246,86 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(
                       width: 33,
                     ),
-                    Text("Before")
+                    Text("Data Sebelumnya")
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: Offset(0, 12), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      "Skema DATA Motorik Kasar",
+                      style: TextStyle(fontSize: 18, color: Colors.blue[300]),
+                    ),
+                    Container(
+                      height: 250,
+                      width: 250,
+                      child: RadarChart.light(
+                        ticks: ticks,
+                        features: features,
+                        data: data1,
+                        reverseAxis: true,
+                        useSides: true,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 20,
+                      width: MediaQuery.of(context).size.width / 3,
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(15)),
+                    ),
+                    SizedBox(
+                      width: 33,
+                    ),
+                    Text("Data Terbaru")
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 20,
+                      width: MediaQuery.of(context).size.width / 3,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(15)),
+                    ),
+                    SizedBox(
+                      width: 33,
+                    ),
+                    Text("Data Sebelumnya")
                   ],
                 ),
               ),
