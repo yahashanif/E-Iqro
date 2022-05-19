@@ -1,4 +1,5 @@
 
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../models/User.dart';
 import '../../models/kegiatan.dart';
@@ -26,3 +28,5 @@ part 'detail_page.dart';
 part 'profil_page.dart';
 part 'media_page.dart';
 part 'detail_media_page.dart';
+part 'screen_image.dart';
+part 'screen_video.dart';

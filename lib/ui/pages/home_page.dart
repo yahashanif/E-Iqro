@@ -258,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                                       );
                                     } else {
                                       return Center(
-                                        child: CircularProgressIndicator(),
+                                        child: Text("Tidak Ada Kegiatan",style: TextStyle(color: Colors.white),),
                                       );
                                     }
                                   }),
