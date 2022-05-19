@@ -11,6 +11,17 @@ class Services {
   late List<Kegiatan> kegiatan;
   late Kegiatan kdata;
   late List splitted;
+  late List<String> SpiderHalusName;
+  List SpiderHalusvalueLast = [];
+  List SpiderHalusvalueBefore = [];
+  List<int> SpiderHalusvalueLastfix = [];
+  List<int> SpiderHalusvalueBeforefix = [];
+
+  late List<String> SpiderKasarName;
+  List SpiderKasarvalueLast = [];
+  List SpiderKasarvalueBefore = [];
+  List<int> SpiderKasarvalueLastfix = [];
+  List<int> SpiderKasarvalueBeforefix = [];
   var box = GetStorage();
 
   String baseURL = "https://eiqro.elites.id/api/";
@@ -29,6 +40,53 @@ class Services {
     return Stream.periodic(Duration(seconds: 3))
         .asyncMap((event) => getKeterangan(tgl));
   }
+
+   getSpiderHalus() async{
+      var url = baseURL + "v1/spider_chart";
+    var token = box.read("token");
+    var header = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+
+    var response = await http.get(Uri.parse(url),headers: header);
+
+    var data = jsonDecode(response.body)['data']['spider_latest']['motorik_halus'] as Map<String,dynamic>;
+    var data2 = jsonDecode(response.body)['data']['spider_before']['motorik_halus'] as Map<String,dynamic>;
+     SpiderHalusvalueLast = [];
+     SpiderHalusvalueLastfix = [];
+    print(data.length);
+   SpiderHalusName = data.keys.toList();
+    data.values.map((e) => SpiderHalusvalueLast.add(e['value'])).toList();
+   print(SpiderHalusName);
+     SpiderHalusvalueBefore = [];
+     SpiderHalusvalueBeforefix = [];
+     SpiderHalusvalueLast.map((e) => SpiderHalusvalueLastfix.add(int.parse(e.toString()))).toList();
+    data2.values.map((e) => SpiderHalusvalueBefore.add(e['value'])).toList();
+     SpiderHalusvalueBefore.map((e) => SpiderHalusvalueBeforefix.add(int.parse(e.toString()))).toList();
+    
+   print(SpiderHalusvalueLastfix);
+   print(SpiderHalusvalueBeforefix);
+  //  
+   var data3 = jsonDecode(response.body)['data']['spider_latest']['motorik_kasar'] as Map<String,dynamic>;
+    var data4 = jsonDecode(response.body)['data']['spider_before']['motorik_kasar'] as Map<String,dynamic>;
+     SpiderKasarvalueLast = [];
+     SpiderKasarvalueLastfix = [];
+    print(data3.length);
+   SpiderKasarName = data3.keys.toList();
+    data3.values.map((e) => SpiderKasarvalueLast.add(e['value'])).toList();
+   print(SpiderKasarName);
+     SpiderKasarvalueBefore = [];
+     SpiderKasarvalueBeforefix = [];
+     SpiderKasarvalueLast.map((e) => SpiderKasarvalueLastfix.add(int.parse(e.toString()))).toList();
+    data4.values.map((e) => SpiderKasarvalueBefore.add(e['value'])).toList();
+     SpiderKasarvalueBefore.map((e) => SpiderKasarvalueBeforefix.add(int.parse(e.toString()))).toList();
+    
+   print(SpiderKasarvalueLastfix);
+   print(SpiderKasarvalueBeforefix);
+
+  }
+  
 
   Future<User> getUser() async {
     var url = baseURL + "v1/siswa";

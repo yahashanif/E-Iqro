@@ -11,6 +11,16 @@ class _ProfilePageState extends State<ProfilePage> {
   bool darkMode = false;
   bool useSides = false;
   double numberOfFeatures = 5;
+  Services services = Services();
+  @override
+  void initState() {
+    services.getSpiderHalus();
+    // services.getSpiderHalus();
+    // services.SpiderHalusName;
+    // services.SpiderHalusvalueBefore;
+    // services.SpiderHalusvalueLast;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +29,22 @@ class _ProfilePageState extends State<ProfilePage> {
     const ticks = [2, 4, 6, 8, 10];
     var features = ["AA", "BB", "CC", "DD", "EE"];
     var data1 = [
-      [1, 3, 4, 8, 9],
-      [10, 2, 4, 4, 9],
+      services.SpiderHalusvalueBeforefix,
+      services.SpiderHalusvalueLastfix,
     ];
     var data2 = [
-      [3, 8, 5, 8, 10],
-      [10, 2, 4, 4, 9],
+      services.SpiderKasarvalueBeforefix,
+      services.SpiderKasarvalueLastfix,
     ];
 
-    features = features.sublist(0, numberOfFeatures.floor());
-    data1 = data1
-        .map((graph) => graph.sublist(0, numberOfFeatures.floor()))
-        .toList();
-    data2 = data2
-        .map((graph) => graph.sublist(0, numberOfFeatures.floor()))
-        .toList();
+    // features = features.sublist(0, numberOfFeatures.floor());
+    // data1 = data1
+    //     .map((graph) => graph.sublist(0, numberOfFeatures.floor()))
+    //     .toList();
+    print(data1);
+    // data2 = data2
+    //     .map((graph) => graph.sublist(0, numberOfFeatures.floor()))
+    //     .toList();
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -101,7 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   children: [
                     Text(
-                      "Skema DATA  Akademik",
+                      "Skema DATA Akademik Motorik Halus",
                       style: TextStyle(fontSize: 18, color: Colors.blue[300]),
                     ),
                     Container(
@@ -109,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 250,
                       child: RadarChart.light(
                         ticks: ticks,
-                        features: ["AA", "BB", "CC", "DD", "EE", "FF"],
+                        features: services.SpiderHalusName,
                         data: data1,
                         reverseAxis: true,
                         useSides: true,
@@ -135,7 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(
                       width: 33,
                     ),
-                    Text("Keterangan")
+                    Text("Latest")
                   ],
                 ),
               ),
@@ -156,7 +167,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(
                       width: 33,
                     ),
-                    Text("Keterangan")
+                    Text("Before")
                   ],
                 ),
               ),
@@ -180,7 +191,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   children: [
                     Text(
-                      "Skema DATA  Akademik",
+                      "Skema DATA Akademik Motorik Kasar",
                       style: TextStyle(fontSize: 18, color: Colors.blue[300]),
                     ),
                     Container(
@@ -188,8 +199,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 250,
                       child: RadarChart.light(
                         ticks: ticks,
-                        features: ["AA", "BB", "CC", "DD", "EE", "FF"],
-                        data: data1,
+                        features: services.SpiderKasarName,
+                        data: data2,
                         reverseAxis: true,
                         useSides: true,
                       ),
@@ -214,7 +225,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(
                       width: 33,
                     ),
-                    Text("Keterangan")
+                    Text("Latest")
                   ],
                 ),
               ),
@@ -235,11 +246,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(
                       width: 33,
                     ),
-                    Text("Keterangan")
+                    Text("Before")
                   ],
                 ),
               ),
-
               SizedBox(
                 height: 95,
               ),
