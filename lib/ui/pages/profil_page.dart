@@ -16,17 +16,14 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     services.SpiderHalusName = [];
     services.SpiderKasarName = [];
-    if(services.SpiderHalusName.isEmpty){
-      setState(() {
-        
-      });
+    if (services.SpiderHalusName.isEmpty) {
+      setState(() {});
     }
     // services.getSpiderHalus();
     // services.SpiderHalusvalueBefore;
     // services.SpiderHalusvalueLast;
     setState(() {
-    services.getSpiderHalus();
-      
+      services.getSpiderHalus();
     });
     super.initState();
   }
@@ -35,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     ProviderUser providerUser = Provider.of<ProviderUser>(context);
     User user = providerUser.user;
-    const ticks = [2, 4, 6, 8, 10];
+    const ticks = [10, 8, 6, 4, 2];
     var features = ["AA", "BB", "CC", "DD", "EE"];
     var data1 = [
       services.SpiderHalusvalueBeforefix,
@@ -128,7 +125,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 250,
                       width: 250,
                       child: RadarChart.light(
-
                         ticks: ticks,
                         features: services.SpiderHalusName,
                         data: data1,
