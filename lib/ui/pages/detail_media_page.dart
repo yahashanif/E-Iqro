@@ -33,7 +33,7 @@ class _DetailMediaPageState extends State<DetailMediaPage> {
         ),
         title: Center(
           child: Text(
-            "7 Agustus",
+            widget.data.tanggal.toString(),
             style: TextStyle(color: Colors.black),
           ),
         ),
