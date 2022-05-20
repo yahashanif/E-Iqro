@@ -8,6 +8,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final box = GetStorage();
   bool darkMode = false;
   bool useSides = false;
   double numberOfFeatures = 5;
@@ -32,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     ProviderUser providerUser = Provider.of<ProviderUser>(context);
     User user = providerUser.user;
-    const ticks = [2,4,6,8,10];
+    const ticks = [2, 4, 6, 8, 10];
     var features = ["A", "B", "C", "D", "E", "F", "G"];
     var features2 = ["H", "I", "K", "L", "M", "N"];
     var data1 = [
@@ -90,56 +91,67 @@ class _ProfilePageState extends State<ProfilePage> {
                             showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return AlertDialog(
-                                    content: Container(
-                                      color: Colors.white,
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            flex: 2,
-                                            child: Column(children: [
-                                              Text("Kode"),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              ...features
-                                                  .map((e) => Container(
-                                                      margin:
-                                                          EdgeInsets.all(10),
-                                                      child: Text(e)))
-                                                  .toList(),
-                                                  ...features2
-                                                  .map((e) => Container(
-                                                      margin:
-                                                          EdgeInsets.all(10),
-                                                      child: Text(e)))
-                                                  .toList(),
-                                            ]),
-                                          ),
-                                          Expanded(
-                                            flex: 4,
-                                            child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text("Keterangan"),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  ...services.SpiderHalusName
-                                                          .map((e) => Container(
-                                                              margin: EdgeInsets
-                                                                  .all(5),
-                                                              child: Text(e)))
-                                                      .toList(),
-                                                  ...services.SpiderKasarName.map((e) => Container(
-                                                              margin: EdgeInsets
-                                                                  .all(5),
-                                                              child: Text(e))).toList()
-                                                ]),
-                                          ),
-                                        ],
-                                      ),
+                                  return Container(
+                                    height: MediaQuery.of(context).size.height /
+                                        (1 / 3),
+                                    color: Colors.white,
+                                    child: ListView(
+                                      children: [
+                                        SizedBox(
+                                          height: 30,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              flex: 2,
+                                              child: Column(children: [
+                                                Text("Kode"),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                ...features
+                                                    .map((e) => Container(
+                                                        margin:
+                                                            EdgeInsets.all(10),
+                                                        child: Text(e)))
+                                                    .toList(),
+                                                ...features2
+                                                    .map((e) => Container(
+                                                        margin:
+                                                            EdgeInsets.all(10),
+                                                        child: Text(e)))
+                                                    .toList(),
+                                              ]),
+                                            ),
+                                            Expanded(
+                                              flex: 4,
+                                              child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text("Keterangan"),
+                                                    SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    ...services.SpiderKasarName
+                                                        .map((e) => Container(
+                                                            margin:
+                                                                EdgeInsets.all(
+                                                                    10),
+                                                            child: Text(
+                                                                e))).toList(),
+                                                    ...services.SpiderHalusName
+                                                        .map((e) => Container(
+                                                            margin:
+                                                                EdgeInsets.all(
+                                                                    10),
+                                                            child: Text(
+                                                                e))).toList(),
+                                                  ]),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   );
                                 });
@@ -161,6 +173,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           /**
                          * Function Log Out
                          */
+                          box.remove("token");
                           Get.offAll(LoginPage());
                         },
                         child: Icon(
@@ -199,8 +212,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 250,
                       child: RadarChart.light(
                         ticks: ticks,
-                        features: features2,
-                        data: data1,
+                        features: features,
+                        data: data2,
                         reverseAxis: false,
                         useSides: true,
                       ),
@@ -278,8 +291,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 250,
                       child: RadarChart.light(
                         ticks: ticks,
-                        features: features,
-                        data: data2,
+                        features: features2,
+                        data: data1,
                         reverseAxis: false,
                         useSides: true,
                       ),
