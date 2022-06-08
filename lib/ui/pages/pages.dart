@@ -31,3 +31,4 @@ part 'media_page.dart';
 part 'detail_media_page.dart';
 part 'screen_image.dart';
 part 'screen_video.dart';
+part 'page_help.dart';

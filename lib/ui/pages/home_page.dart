@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
       formattedDate = DateFormat('yyyy-MM-dd').format(date!);
     }
     return Scaffold(
+    
       body: SafeArea(
         child: ListView(children: [
           Column(
@@ -258,7 +259,10 @@ class _HomePageState extends State<HomePage> {
                                       );
                                     } else {
                                       return Center(
-                                        child: Text("Tidak Ada Kegiatan",style: TextStyle(color: Colors.white),),
+                                        child: Text(
+                                          "Tidak Ada Kegiatan",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
                                       );
                                     }
                                   }),

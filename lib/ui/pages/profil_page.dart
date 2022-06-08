@@ -15,6 +15,9 @@ class _ProfilePageState extends State<ProfilePage> {
   Services services = Services();
   @override
   void initState() {
+    setState(() {
+      services.getSpiderHalus();
+    });
     services.SpiderHalusName = [];
     services.SpiderKasarName = [];
     if (services.SpiderHalusName.isEmpty) {
@@ -23,9 +26,6 @@ class _ProfilePageState extends State<ProfilePage> {
     // services.getSpiderHalus();
     // services.SpiderHalusvalueBefore;
     // services.SpiderHalusvalueLast;
-    setState(() {
-      services.getSpiderHalus();
-    });
     super.initState();
   }
 
@@ -81,6 +81,13 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         Text(
                           "${user.kelas}",
+                          style: TextStyle(fontSize: 18, color: Colors.white),
+                        ),
+                         SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "${user.alamat}",
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                         SizedBox(

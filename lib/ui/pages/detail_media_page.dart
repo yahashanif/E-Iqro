@@ -31,6 +31,7 @@ class _DetailMediaPageState extends State<DetailMediaPage> {
             color: Colors.black,
           ),
         ),
+        centerTitle: true,
         title: Center(
           child: Text(
             widget.data.tanggal.toString(),
@@ -49,7 +50,9 @@ class _DetailMediaPageState extends State<DetailMediaPage> {
                 ...asset.map((e) {
                   print(e.toString().substring(e.toString().length - 3));
                   if (e.toString().substring(e.toString().length - 3) ==
-                      "mp4") {
+                          "mp4" ||
+                      e.toString().substring(e.toString().length - 3) ==
+                          "mkv") {
                     return GestureDetector(
                       onTap: () {
                         Get.to(VideoPlayerItem(videoUrl: e));

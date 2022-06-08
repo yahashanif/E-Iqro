@@ -28,12 +28,12 @@ class _LoginPageState extends State<LoginPage> {
                         height: MediaQuery.of(context).size.height / 2.8,
                         child: Align(
                             alignment: Alignment.topLeft,
-                            child: Image.asset("assets/preview-1.png"))),
+                            child: Image.asset("assets/login_atas.png"))),
                     Container(
                         height: MediaQuery.of(context).size.height / 2.8,
                         child: Align(
                             alignment: Alignment.bottomRight,
-                            child: Image.asset("assets/preview-2.png"))),
+                            child: Image.asset("assets/login_bawah.png"))),
                   ],
                 ),
               ),

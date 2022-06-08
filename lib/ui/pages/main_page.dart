@@ -1,10 +1,8 @@
-
 part of 'pages.dart';
 
 class MainPage extends StatefulWidget {
-   int? bottomNavBarIndex;
-    MainPage({this.bottomNavBarIndex = 0});
-  
+  int? bottomNavBarIndex;
+  MainPage({this.bottomNavBarIndex = 0});
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -18,7 +16,6 @@ class _MainPageState extends State<MainPage> {
 
   @override
   void initState() {
-    
     super.initState();
     // print(context.read<AddressCubit>().getAddress(
     //     (context.read<UserCubit>().state as UserLoaded).user.id.toString()));
@@ -28,9 +25,19 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-     ProviderUser providerUser = Provider.of<ProviderUser>(context);
+    ProviderUser providerUser = Provider.of<ProviderUser>(context);
     User user = providerUser.user;
     return Scaffold(
+        floatingActionButton: GestureDetector(
+          onTap: (){
+            Get.to(PageHelp());
+          },
+          child: Icon(
+            Icons.help,
+            color: Colors.amber,
+            size: 75,
+          ),
+        ),
         backgroundColor: Colors.white,
         bottomNavigationBar: Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -44,9 +51,7 @@ class _MainPageState extends State<MainPage> {
                       curve: Curves.bounceInOut);
                 });
               },
-            )
-          
-            ),
+            )),
         body: PageView(
           controller: pageController,
           onPageChanged: (index) {
