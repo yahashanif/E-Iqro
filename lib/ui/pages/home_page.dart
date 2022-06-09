@@ -54,12 +54,12 @@ class _HomePageState extends State<HomePage> {
                             height: MediaQuery.of(context).size.height / 2.8,
                             child: Align(
                                 alignment: Alignment.topLeft,
-                                child: Image.asset("assets/preview 3.png"))),
+                                child: Image.asset("assets/home_atas.png"))),
                         Container(
                             height: MediaQuery.of(context).size.height / 2.8,
                             child: Align(
                                 alignment: Alignment.bottomRight,
-                                child: Image.asset("assets/preview 3-1.png"))),
+                                child: Image.asset("assets/home_bawah.png"))),
                       ],
                     ),
                   ),
